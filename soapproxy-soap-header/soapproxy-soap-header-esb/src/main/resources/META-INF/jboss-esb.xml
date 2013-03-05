@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbossesb parameterReloadSecs="5"
+  xmlns="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd http://anonsvn.jboss.org/repos/labs/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd">
+
+  <services>
+    <service category="Samples" name="SOAPProxy-SoapHeader" description="Setting SOAP Headers through SOAPProxy"
+      invmScope="GLOBAL">
+      <listeners>
+        <http-gateway name="Http-Gateway" />
+      </listeners>
+      <actions mep="RequestResponse">
+        <action name="set-http-headers" class="com.redhat.samples.esb.SetHttpHeaders" />
+        <action name="print-request" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="Message before SOAPProxy" />
+          <property name="printfull" value="true" />
+        </action>
+        <action name="soapproxy" class="org.jboss.soa.esb.actions.soap.proxy.SOAPProxy">
+          <property name="wsdl" value="http://localhost:18080/greeting?wsdl" />
+          <property name="endpointUrl" value="http://localhost:18081/greeting" />
+          <property name="MappedHeaderList" value="Remote-Host, Custom-Header" />
+        </action>
+        <action name="print-response" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="Message after SOAPProxy" />
+          <property name="printfull" value="true" />
+        </action>
+      </actions>
+    </service>
+  </services>
+
+</jbossesb>
