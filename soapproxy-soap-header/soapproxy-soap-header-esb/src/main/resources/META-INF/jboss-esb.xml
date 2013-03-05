@@ -17,7 +17,7 @@
         </action>
         <action name="soapproxy" class="org.jboss.soa.esb.actions.soap.proxy.SOAPProxy">
           <property name="wsdl" value="http://localhost:18080/greeting?wsdl" />
-          <property name="endpointUrl" value="http://localhost:18081/greeting" />
+          <!-- <property name="endpointUrl" value="http://localhost:18081/greeting" /> -->
           <property name="MappedHeaderList" value="Remote-Host, Custom-Header" />
         </action>
         <action name="print-response" class="org.jboss.soa.esb.actions.SystemPrintln">
