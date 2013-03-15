@@ -12,4 +12,11 @@
   <artifactId>soapproxy-mtom-ws</artifactId>
   <packaging>war</packaging>
 
+  <dependencies>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+  </dependencies>
+
 </project>
