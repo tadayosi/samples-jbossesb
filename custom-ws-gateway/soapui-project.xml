@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="custom-ws-gateway" resourceRoot="" soapui-version="4.5.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GreetingGatewayServiceBinding" type="wsdl" bindingName="{http://ws.esb.samples.redhat.com/}GreetingGatewayServiceBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/custom-ws-gateway-ws/greeting?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/custom-ws-gateway-ws/greeting?wsdl"><con:part><con:url>http://localhost:8080/custom-ws-gateway-ws/greeting?wsdl</con:url><con:content><![CDATA[<definitions name="GreetingGatewayServiceService" targetNamespace="http://ws.esb.samples.redhat.com/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.esb.samples.redhat.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xs:schema targetNamespace="http://ws.esb.samples.redhat.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="hello" type="tns:hello"/>
+      <xs:element name="helloResponse" type="tns:helloResponse"/>
+      <xs:complexType name="hello">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="helloResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="GreetingGatewayService_hello">
+    <part element="tns:hello" name="hello"/>
+  </message>
+  <message name="GreetingGatewayService_helloResponse">
+    <part element="tns:helloResponse" name="helloResponse"/>
+  </message>
+  <portType name="GreetingGatewayService">
+    <operation name="hello" parameterOrder="hello">
+      <input message="tns:GreetingGatewayService_hello"/>
+      <output message="tns:GreetingGatewayService_helloResponse"/>
+    </operation>
+  </portType>
+  <binding name="GreetingGatewayServiceBinding" type="tns:GreetingGatewayService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="hello">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="GreetingGatewayServiceService">
+    <port binding="tns:GreetingGatewayServiceBinding" name="GreetingGatewayServicePort">
+      <soap:address location="http://127.0.0.1:8080/custom-ws-gateway-ws/greeting"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8080/custom-ws-gateway-ws/greeting</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="hello" bindingOperationName="hello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8080/custom-ws-gateway-ws/greeting</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.esb.samples.redhat.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:hello>
+         <!--Optional:-->
+         <name>soapUI</name>
+      </ws:hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.esb.samples.redhat.com/GreetingGatewayService/helloRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="request-error"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8080/custom-ws-gateway-ws/greeting</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.esb.samples.redhat.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:hello>
+         <!--Optional:-->
+         <name>ERROR</name>
+      </ws:hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.esb.samples.redhat.com/GreetingGatewayService/helloRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

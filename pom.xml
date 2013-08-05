@@ -12,9 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jbossas.home>/opt/jboss-soa-p-5.3.0/jboss-as</jbossas.home>
-    <jbossas.version>5.1.0.GA</jbossas.version>
-    <jbossesb.version>4.11</jbossesb.version>
+    <jbossas.home>/opt/jboss-soa-p-5.3.1/jboss-as</jbossas.home>
+    <jbossas.version>5.2.0.GA</jbossas.version>
+    <jbossesb.version>4.11.1</jbossesb.version>
   </properties>
 
   <build>
