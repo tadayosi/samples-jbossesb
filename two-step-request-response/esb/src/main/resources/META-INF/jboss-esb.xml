@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbossesb parameterReloadSecs="5"
+  xmlns="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd http://anonsvn.jboss.org/repos/labs/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd">
+
+  <services>
+    <service category="Samples" name="Two-Step-Hello" description="Two-step hello service (front-end)"
+      invmScope="GLOBAL">
+      <actions mep="OneWay">
+        <action name="dispatch" class="com.redhat.samples.esb.DispatchAction" />
+      </actions>
+    </service>
+    <service category="Samples" name="Two-Step-Hello-Backend" description="Two-step hello service (back-end)"
+      invmScope="GLOBAL">
+      <actions mep="RequestResponse">
+        <action name="hello" class="com.redhat.samples.esb.GreetingAction" process="hello" />
+      </actions>
+    </service>
+    <service category="Samples" name="Two-Step-Hello-Backend-Error" description="Two-step hello service (back-end error)"
+      invmScope="GLOBAL">
+      <actions mep="RequestResponse">
+        <action name="hello" class="com.redhat.samples.esb.GreetingAction" process="error" />
+      </actions>
+    </service>
+  </services>
+
+</jbossesb>
