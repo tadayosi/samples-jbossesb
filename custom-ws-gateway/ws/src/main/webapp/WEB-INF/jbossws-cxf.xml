@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:beans="http://www.springframework.org/schema/beans" xmlns:jaxws="http://cxf.apache.org/jaxws"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+  <bean id="UsernameTokenAuthentication" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+    <constructor-arg>
+      <map>
+        <entry key="action" value="UsernameToken" />
+        <entry key="passwordCallbackClass" value="com.redhat.samples.esb.ws.JaasUserPassCallbackHandler" />
+      </map>
+    </constructor-arg>
+  </bean>
+
+  <jaxws:endpoint id="Greeting" implementor="com.redhat.samples.esb.ws.GreetingGatewayService" address="/custom-ws-gateway-ws/greeting"
+    wsdlLocation="/WEB-INF/wsdl/greeting.wsdl">
+    <jaxws:invoker>
+      <bean class="org.jboss.wsf.stack.cxf.InvokerJSE" />
+    </jaxws:invoker>
+    <!-- WS-Security -->
+    <jaxws:inInterceptors>
+      <ref bean="UsernameTokenAuthentication" />
+      <bean class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor" />
+    </jaxws:inInterceptors>
+    <!-- Validation -->
+    <jaxws:properties>
+      <entry key="schema-validation-enabled" value="true" />
+    </jaxws:properties>
+  </jaxws:endpoint>
+
+</beans>
