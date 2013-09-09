@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:cxf="http://cxf.apache.org/core" xmlns:beans="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://cxf.apache.org/core
+    http://cxf.apache.org/schemas/core.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <bean id="wss4jOut" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+    <constructor-arg>
+      <map>
+        <entry key="action" value="UsernameToken Timestamp" />
+        <entry key="user" value="kermit" />
+        <entry key="passwordType" value="PasswordText" />
+        <entry key="passwordCallbackClass" value="com.redhat.samples.esb.ClientPasswordCallback" />
+      </map>
+    </constructor-arg>
+  </bean>
+
+  <cxf:bus>
+    <cxf:features>
+      <cxf:logging />
+    </cxf:features>
+    <cxf:outInterceptors>
+      <ref bean="wss4jOut" />
+    </cxf:outInterceptors>
+  </cxf:bus>
+
+</beans>
