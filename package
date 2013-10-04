@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+if ARGV.length < 1
+  exit
+end
+
+target = ARGV[0].chomp("/")
+zip = target + ".zip"
+if File.exists?(zip)
+  puts "deleting existing #{zip}"
+  File.delete(zip)
+end
+
+docs = [ "README.md" ]
+poms = [ "pom.xml" ] + `find #{target} -name pom.xml -type f`.split
+soapuis = `find #{target} -name soapui-project.xml -type f`.split
+srcs = `find #{target} -name src -type d`.split
+
+# files
+(docs + poms + soapuis).each { |entry|
+  `zip #{zip} #{entry}`
+}
+# dirs
+srcs.each { |entry|
+  `zip #{zip} -r #{entry}`
+}
