@@ -13,8 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>soapclient-wssecurity-esb</module>
-    <module>soapclient-wssecurity-ws</module>
+    <module>esb</module>
+    <module>ws</module>
   </modules>
 
 </project>

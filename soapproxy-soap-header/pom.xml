@@ -13,8 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>soapproxy-soap-header-esb</module>
-    <module>soapproxy-soap-header-ws</module>
+    <module>esb</module>
+    <module>ws</module>
   </modules>
 
 </project>

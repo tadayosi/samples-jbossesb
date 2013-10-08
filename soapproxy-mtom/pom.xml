@@ -13,8 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>soapproxy-mtom-esb</module>
-    <module>soapproxy-mtom-ws</module>
+    <module>esb</module>
+    <module>ws</module>
   </modules>
 
 </project>
