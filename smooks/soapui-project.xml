@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="smooks" resourceRoot="" soapui-version="4.6.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SmooksServiceBinding" type="wsdl" bindingName="{http://soa.jboss.org/Samples}SmooksServiceBinding" soapVersion="1_1" anonymous="optional" definition="http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl"><con:part><con:url>http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soa.jboss.org/Samples" xmlns:esbns1="http://esb.samples.redhat.com/types" xmlns:esbns2="http://esb.samples.redhat.com/types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soa.jboss.org/Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://esb.samples.redhat.com/types" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl&amp;resource=request.xsd"/>
+    </xs:schema>
+    <xs:schema targetNamespace="http://esb.samples.redhat.com/types" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl&amp;resource=response.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SmooksServiceRes">
+    <wsdl:part element="esbns1:helloResponse" name="out"/>
+  </wsdl:message>
+  <wsdl:message name="SmooksServiceReq">
+    <wsdl:part element="esbns1:hello" name="in"/>
+  </wsdl:message>
+  <wsdl:portType name="SmooksServicePortType">
+    <wsdl:operation name="SmooksServiceOp">
+      <wsdl:input message="tns:SmooksServiceReq" name="SmooksServiceReq"/>
+      <wsdl:output message="tns:SmooksServiceRes" name="SmooksServiceRes"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmooksServiceBinding" type="tns:SmooksServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SmooksServiceOp">
+      <soap:operation soapAction="http://soa.jboss.org/Samples/SmooksServiceOp"/>
+      <wsdl:input name="SmooksServiceReq">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SmooksServiceRes">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmooksServiceService">
+    <wsdl:port binding="tns:SmooksServiceBinding" name="SmooksServicePortType">
+      <soap:address location="http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl&amp;resource=request.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://esb.samples.redhat.com/types" version="1.0" xmlns:types="http://esb.samples.redhat.com/types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="hello" type="types:hello"/>
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService?wsdl&amp;resource=response.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://esb.samples.redhat.com/types" version="1.0" xmlns:types="http://esb.samples.redhat.com/types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="helloResponse" type="types:helloResponse"/>
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://soa.jboss.org/Samples/SmooksServiceOp" name="SmooksServiceOp" bindingOperationName="SmooksServiceOp" type="Request-Response" outputName="SmooksServiceRes" inputName="SmooksServiceReq" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8080/sample-smooks/ebws/Samples/SmooksService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://esb.samples.redhat.com/types">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:hello>
+         <!--Optional:-->
+         <name>soapUI</name>
+      </typ:hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soa.jboss.org/Samples/SmooksServiceOp"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

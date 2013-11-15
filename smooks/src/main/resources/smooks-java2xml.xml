@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:ftl="http://www.milyn.org/xsd/smooks/freemarker-1.1.xsd">
+
+  <ftl:freemarker applyOnElement="com.redhat.samples.esb.model.HelloResponse">
+    <ftl:template>
+      <!--
+        <types:helloResponse xmlns:types="http://esb.samples.redhat.com/types">
+        <return>${helloResponse.message}</return>
+        </types:helloResponse>
+      -->
+    </ftl:template>
+  </ftl:freemarker>
+
+</smooks-resource-list>

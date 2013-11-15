@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbossesb parameterReloadSecs="5"
+  xmlns="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd http://anonsvn.jboss.org/repos/labs/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.3.1.xsd">
+
+  <services>
+    <service category="Samples" name="SmooksService" description="Service using Smooks" invmScope="GLOBAL">
+      <property name="maxThreads" value="100" />
+      <actions mep="RequestResponse" inXsd="/request.xsd" outXsd="/response.xsd" webservice="true" validate="true">
+        <action name="print-request-xml" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="***** REQUEST  (XML)  **************************************************" />
+        </action>
+        <action name="xml-to-java" class="org.jboss.soa.esb.smooks.SmooksAction">
+          <property name="smooksConfig" value="/smooks-xml2java.xml" />
+          <property name="resultType" value="JAVA" />
+        </action>
+        <action name="print-request-java" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="***** REQUEST  (Java) **************************************************" />
+        </action>
+        <action name="hello" class="com.redhat.samples.esb.HelloAction" />
+        <action name="print-response-java" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="***** RESPONSE (Java) **************************************************" />
+        </action>
+        <action name="java-to-xml" class="org.jboss.soa.esb.smooks.SmooksAction">
+          <property name="smooksConfig" value="/smooks-java2xml.xml" />
+          <property name="resultType" value="STRING" />
+        </action>
+        <action name="print-response-xml" class="org.jboss.soa.esb.actions.SystemPrintln">
+          <property name="message" value="***** RESPONSE (XML)  **************************************************" />
+        </action>
+      </actions>
+    </service>
+  </services>
+
+</jbossesb>
