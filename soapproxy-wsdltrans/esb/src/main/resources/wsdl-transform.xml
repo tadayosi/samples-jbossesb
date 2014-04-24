@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd">
+
+  <params>
+    <param name="soap-address">https://www.example.com:12345/sample/greeting</param>
+  </params>
+
+  <resource-config selector="port address" selector-namespace="http://schemas.xmlsoap.org/wsdl/soap/">
+    <resource>com.redhat.samples.esb.SoapAddressTransformer</resource>
+  </resource-config>
+
+</smooks-resource-list>
