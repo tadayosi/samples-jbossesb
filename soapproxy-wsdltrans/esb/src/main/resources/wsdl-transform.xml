@@ -3,7 +3,12 @@
 
   <params>
     <param name="soap-address">https://www.example.com:12345/sample/greeting</param>
+    <param name="schema-location">https://www.example.com:12345/sample/greeting.xsd</param>
   </params>
+
+  <resource-config selector="import">
+    <resource>com.redhat.samples.esb.SoapAddressTransformer</resource>
+  </resource-config>
 
   <resource-config selector="port address" selector-namespace="http://schemas.xmlsoap.org/wsdl/soap/">
     <resource>com.redhat.samples.esb.SoapAddressTransformer</resource>
